@@ -35,7 +35,20 @@ inline as base64 into the JS bundle. Verified: `dist/` contains only text files
 (index.html, JS, CSS, two SVG files from `public/`) — no png/jpg/webp/mp4.
 Source goes to `main`, built `dist/` contents go to `gh-pages` (root).
 
-## Verification
+## Deploy fix (2026-10-26, same night)
+
+The first single-file push of the 5.95 MB inlined bundle failed with HTTP 413,
+and the file alone also failed — the push path's body limit sits below ~6 MB.
+Fix, both verified by re-screenshot: (1) images resized/compressed with ffmpeg
+(hero 1100px, others 900px, webp q72–74) — 4.1 MB → 0.69 MB, no visible loss in
+screenshots; (2) sections lazy-loaded (`src/sections/`) so Rollup splits the
+bundle into chunks ≤ 600 KB, pushed to `gh-pages` in five small commits
+(html/css/icons, main chunk, gallery+shared chunks, section chunks, index).
+The `main` branch carries the same source minus the binary `src/assets/`
+images (push path accepts text only); the live `gh-pages` bundle carries them
+inlined. To rebuild from `main` alone, restore the 8 images into
+`src/assets/` from `assets-raw/` (originals) and run the ffmpeg resize step
+above, or copy them from the local project copy.
 
 - `npm run build` passes (tsc + vite build, 443 modules).
 - Served `dist/` locally and screenshotted with headless Chrome: desktop
