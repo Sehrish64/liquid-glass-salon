@@ -50,6 +50,19 @@ inlined. To rebuild from `main` alone, restore the 8 images into
 `src/assets/` from `assets-raw/` (originals) and run the ffmpeg resize step
 above, or copy them from the local project copy.
 
+## Hero readability fix (2026-10-26, later that night)
+
+Sehrish's feedback: hero text sat straight on the bridal photo and looked
+washed/incomplete — it needed a background. Fix (one treatment, in the site's
+own liquid-glass language): the badge + headline + subtext + CTAs now sit on a
+`.liquid-glass-panel` (src/index.css) — dark-tinted glass, backdrop blur 20px,
+thin gold-tinted edge via the same gradient-border mask technique as
+`.liquid-glass`, wrapped around the text block in `src/App.tsx`. The base
+photo gradient and everything else are unchanged; the two glass info cards
+below the panel are untouched. Verified by re-screenshot (desktop 1440×900 +
+mobile 390×844): copy crisp at both sizes, bride still clearly visible around
+and softly through the panel, no clipped text.
+
 - `npm run build` passes (tsc + vite build, 443 modules).
 - Served `dist/` locally and screenshotted with headless Chrome: desktop
   1440×900 + mobile 390×844 for hero, services, packages, gallery, booking —

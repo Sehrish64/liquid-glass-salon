@@ -78,6 +78,7 @@ function Hero() {
       </div>
       <div className="relative z-10 flex min-h-screen flex-col">
         <div className="flex flex-1 flex-col items-center justify-center px-4 pb-10 pt-28 text-center">
+          <div className="liquid-glass-panel flex w-full max-w-[54rem] flex-col items-center rounded-[2rem] px-5 py-8 sm:px-8 md:px-12 md:py-10">
           <motion.div
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.4 }}
@@ -128,6 +129,7 @@ function Hero() {
               View Services
             </a>
           </motion.div>
+          </div>
 
           <motion.div
             {...fadeUp}

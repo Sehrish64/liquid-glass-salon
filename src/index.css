@@ -77,6 +77,48 @@ body {
   pointer-events: none;
 }
 
+/* Hero text panel — dark-tinted liquid glass with a gold edge, so the hero
+   copy stays crisp over the bridal photograph while she stays visible
+   around and softly through the glass. */
+.liquid-glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgba(22, 18, 9, 0.68),
+    rgba(8, 7, 5, 0.56) 55%,
+    rgba(22, 18, 9, 0.64)
+  );
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  border: none;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(212, 175, 55, 0.55) 0%,
+    rgba(212, 175, 55, 0.22) 20%,
+    rgba(212, 175, 55, 0.04) 40%,
+    rgba(212, 175, 55, 0.04) 60%,
+    rgba(212, 175, 55, 0.22) 80%,
+    rgba(212, 175, 55, 0.55) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 /* Salon gold + hero slow zoom */
 @keyframes kenburns {
   from { transform: scale(1); }
